@@ -1,34 +1,32 @@
+# Dependencies
 node_modules/
+backend/node_modules/
+package-lock.json
+
+# Build output
 dist/
-.DS_Store
+build/
+
+# Environment variables (keep only .example files)
 .env
 .env.local
-.env.production.example
-npm-debug.log
-.vscode/
-.idea/
-*.swp
-*.swo
-*.log
-backend/uploads/
+.env.*.local
 backend/.env
-backend/node_modules/
-docker-compose.override.yml
 
-# Deployment scripts
-deploy-digitalocean.ps1
-deploy-digitalocean.sh
-*.ps1
+# Logs
+npm-debug.log
+*.log
+logs/
 
-# Deployment documentation
-DIGITALOCEAN_DEPLOY.md
-DIGITALOCEAN_DEPLOY_CHECKLIST.md
-DIGITALOCEAN_README.md
-START_DEPLOY.md
+# Upload directories
+backend/uploads/
+uploads/
 
 # OS files
-Thumbs.db
 .DS_Store
+Thumbs.db
+*.swp
+*.swo
 
 # IDE files
 .vscode/
@@ -36,7 +34,10 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 
-# Build files
+# Docker override
+docker-compose.override.yml
+
+# Build artifacts
 *.tar
 *.gz
 *.zip
@@ -45,4 +46,8 @@ Thumbs.db
 tmp/
 temp/
 *.tmp
+
+# Project-specific
+project-status.json
+READY_FOR_DEPLOYMENT.txt
 

@@ -1,7 +1,6 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import multer from 'multer'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import pool from './config/database.js'
@@ -21,29 +20,6 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }))
 
 // Статические файлы для загруженных фото
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
-
-// Настройка multer для загрузки файлов
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, 'uploads'))
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
-    cb(null, 'photo-' + uniqueSuffix + path.extname(file.originalname))
-  }
-})
-
-export const upload = multer({
-  storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB max
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype.startsWith('image/')) {
-      cb(null, true)
-    } else {
-      cb(new Error('Only image files are allowed'), false)
-    }
-  }
-})
 
 // Routes
 app.use('/api/auth', authRoutes)

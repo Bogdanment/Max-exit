@@ -1,7 +1,7 @@
 import express from 'express'
 import pool from '../config/database.js'
 import { verifyToken, isAdmin } from '../middleware/auth.js'
-import { upload } from '../server.js'
+import { upload } from '../middleware/upload.js'
 
 const router = express.Router()
 

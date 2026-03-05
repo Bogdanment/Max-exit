@@ -176,6 +176,19 @@ DELETE /api/products/:id       # Удалить (админ)
 
 ---
 
+## � Деплой на Production
+
+Выберите платформу и следуйте инструкциям в папке `docs/deployment/`:
+
+- **[DigitalOcean VPS](./docs/deployment/DIGITALOCEAN_DEPLOY.md)** - Полный контроль, $5-20/месяц
+- **[Railway](./docs/deployment/QUICK_DEPLOY.md)** - Простой деплой, $5/месяц ⭐ РЕКОМЕНДУЕТСЯ
+- **[Render](./docs/deployment/RENDER_DEPLOY.md)** - Free + платный план
+- **[Heroku](./docs/deployment/HEROKU_DEPLOY.md)** - Классический вариант, $7/месяц
+
+**[📚 Все гайды в папке docs/deployment/](./docs/deployment/)**
+
+---
+
 ## 🔐 Безопасность
 
 - ✅ JWT tokens для аутентификации
@@ -196,8 +209,6 @@ DELETE /api/products/:id       # Удалить (админ)
 | PostgreSQL конфиг | ✅ Готово |
 | JWT аутентификация | ✅ Готово |
 | Admin панель | ✅ Готово |
-
-**👉 Смотрите [DEPLOYMENT.md](./DEPLOYMENT.md) для инструкций**
 
 ---
 

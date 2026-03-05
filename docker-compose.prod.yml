@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # PostgreSQL Database
   postgres:
@@ -57,7 +55,7 @@ services:
     ports:
       - "3000:3001"
     environment:
-      VITE_API_URL: ${VITE_API_URL:-http://api:5000/api}
+      VITE_API_URL: ${VITE_API_URL:-http://159.223.20.99:5000/api}
     networks:
       - exit-network
     restart: always
