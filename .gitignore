@@ -1,0 +1,48 @@
+node_modules/
+dist/
+.DS_Store
+.env
+.env.local
+.env.production.example
+npm-debug.log
+.vscode/
+.idea/
+*.swp
+*.swo
+*.log
+backend/uploads/
+backend/.env
+backend/node_modules/
+docker-compose.override.yml
+
+# Deployment scripts
+deploy-digitalocean.ps1
+deploy-digitalocean.sh
+*.ps1
+
+# Deployment documentation
+DIGITALOCEAN_DEPLOY.md
+DIGITALOCEAN_DEPLOY_CHECKLIST.md
+DIGITALOCEAN_README.md
+START_DEPLOY.md
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Build files
+*.tar
+*.gz
+*.zip
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+

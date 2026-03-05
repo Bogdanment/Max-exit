@@ -1,0 +1,17 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "dockerfile",
+    "buildCommand": "npm run build"
+  },
+  "deploy": {
+    "numReplicas": 1,
+    "startCommand": "npm run serve"
+  },
+  "variables": {
+    "VITE_API_URL": {
+      "description": "Backend API URL",
+      "value": "https://backend-url.railway.app/api"
+    }
+  }
+}

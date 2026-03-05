@@ -1,0 +1,55 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: exit-db
+    env: docker
+    dockerfilePath: ./
+    dockerCommand: postgres
+    envVars:
+      - key: POSTGRES_USER
+        value: postgres
+      - key: POSTGRES_PASSWORD
+        generateValue: true
+      - key: POSTGRES_DB
+        value: exit_db
+    persistenceMount:
+      mountPath: /var/lib/postgresql/data
+      sizeGB: 10
+
+  # Backend API
+  - type: web
+    name: exit-api
+    env: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_HOST
+        fromService:
+          name: exit-db
+          type: pserv
+          envVarKey: HOSTNAME
+      - key: DB_PORT
+        value: "5432"
+      - key: DB_USER
+        value: postgres
+      - key: DB_PASSWORD
+        fromService:
+          name: exit-db
+          type: pserv
+          envVarKey: POSTGRES_PASSWORD
+      - key: DB_NAME
+        value: exit_db
+
+  # Frontend
+  - type: web
+    name: exit-frontend
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run serve
+    envVars:
+      - key: VITE_API_URL
+        value: https://exit-api.onrender.com/api
