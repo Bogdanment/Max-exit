@@ -1,31 +1,11 @@
-FROM node:20-alpine AS builder
-
-WORKDIR /app
-
-# Копируем ТОЛЬКО package files (для кеширования)
-COPY package*.json ./
-
-# Устанавливаем зависимости (кешируется если package.json не изменился)
-RUN npm install --frozen-lockfile
-
-# Теперь копируем остальной код (это слой которы часто меняется)
-COPY . .
-
-# Передаём API URL для сборки
-ARG VITE_API_URL
-ENV VITE_API_URL=$VITE_API_URL
-
-# Сборка
-RUN npm run build
-
-# Production stage
 FROM node:20-alpine
 
 WORKDIR /app
 
 RUN npm install -g http-server
 
-COPY --from=builder /app/dist ./dist
+# Копируем готовый собранный dist файл
+COPY dist ./dist
 
 EXPOSE 3001
 

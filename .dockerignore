@@ -2,7 +2,6 @@
 .env.local
 .env.*.local
 node_modules/
-dist/
 build/
 uploads/
 .DS_Store
@@ -31,3 +30,4 @@ Dockerfile
 docker-compose.yml
 docker-compose.prod.yml
 Procfile
+src/
