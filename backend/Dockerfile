@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Устанавливаем зависимости
-RUN npm install
+RUN npm install --frozen-lockfile
 
 # Копируем код приложения
 COPY . .
@@ -18,4 +18,5 @@ RUN mkdir -p uploads
 EXPOSE 5000
 
 # Запускаем приложение
+CMD ["npm", "start"]
 CMD ["npm", "start"]

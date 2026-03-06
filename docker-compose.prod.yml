@@ -49,13 +49,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.frontend
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://159.223.20.99:5000/api}
     container_name: exit_frontend_prod
     depends_on:
       - api
     ports:
       - "3000:3001"
-    environment:
-      VITE_API_URL: ${VITE_API_URL:-http://159.223.20.99:5000/api}
     networks:
       - exit-network
     restart: always
